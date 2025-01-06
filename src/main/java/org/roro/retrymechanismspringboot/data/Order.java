@@ -12,7 +12,6 @@ import java.math.BigDecimal;
 @NoArgsConstructor
 @Builder
 public class Order {
-
         private ProductType productType;
         private int quantity;
         private BigDecimal price;

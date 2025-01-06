@@ -5,10 +5,7 @@ import org.roro.retrymechanismspringboot.data.Order;
 import org.roro.retrymechanismspringboot.exception.OrderProcessException;
 import org.roro.retrymechanismspringboot.service.OrderService;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/v1/order")
@@ -17,8 +14,13 @@ public class OrderApi {
 
     private final OrderService orderService;
 
-    @PostMapping
-    public ResponseEntity<String> saveTodo(@RequestBody Order order) throws OrderProcessException {
+    @GetMapping(path = "/check")
+    public String checkApiIsReady() {
+        return "Order Api is ready to use";
+    }
+
+    @PostMapping(path = "/submit")
+    public ResponseEntity<String> submitOrder(@RequestBody Order order) throws OrderProcessException {
         return ResponseEntity.ok(orderService.processOrder(order));
     }
 }
