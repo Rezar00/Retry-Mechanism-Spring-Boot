@@ -1,0 +1,7 @@
+spring:
+  application.name: Retry-Mechanism-Spring-Boot
+  profiles:
+    active: dev
+
+server:
+  port: 8080
